@@ -234,16 +234,15 @@
 
         flag = !flag;
 
-        if(checkIfAllMarked(box_status) == true){
-            $('#txt_msg').text("Draw!");
-            $('#txt_msg').append(`
-                <a style="color: #69a3ff; text-decoration: none;" href="">RESTART</a>
-            `);
+        // if(checkIfAllMarked(box_status) == true){
+        //     $('#txt_msg').text("Draw!");
+        //     $('#txt_msg').append(`
+        //         <a style="color: #69a3ff; text-decoration: none;" href="">RESTART</a>
+        //     `);
     
-            return false;
-        }
+        //     return false;
+        // }
         
-        // alert("Draw");
 
         var winner = checkWinner(box_val);
 
@@ -262,6 +261,15 @@
 
         if(winner == 'o'){
             $('#txt_msg').text("O is the Winner!");
+            $('#txt_msg').append(`
+                <a style="color: #69a3ff; text-decoration: none;" href="">RESTART</a>
+            `);
+    
+            return false;
+        }
+
+        if(checkIfAllMarked(box_status) == true){
+            $('#txt_msg').text("Draw!");
             $('#txt_msg').append(`
                 <a style="color: #69a3ff; text-decoration: none;" href="">RESTART</a>
             `);
