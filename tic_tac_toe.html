@@ -234,7 +234,16 @@
 
         flag = !flag;
 
-        if(checkIfAllMarked(box_status) == true) alert("Draw");
+        if(checkIfAllMarked(box_status) == true){
+            $('#txt_msg').text("Draw!");
+            $('#txt_msg').append(`
+                <a style="color: #69a3ff; text-decoration: none;" href="">RESTART</a>
+            `);
+    
+            return false;
+        }
+        
+        // alert("Draw");
 
         var winner = checkWinner(box_val);
 
