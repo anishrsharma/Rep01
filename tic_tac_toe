@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #000;
+            font-family: 'Roboto Mono', monospace;
+        }
+        .container_main{
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #txt_msg{
+            position: absolute;
+            color: #fff;
+            top: 30px;
+
+
+        }
+
+        
+        .container_box{
+            /* border: 2px solid #fff; */
+            width: 304px;
+            height: 300px;
+
+            display: flex;
+            flex-wrap: wrap;
+            
+        }
+
+        .container_block{
+            border: 2px solid #fff;
+            width: 100px;
+            height: 100px;            
+            color: #fff;
+        }
+
+        .fa{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            margin-top: auto;
+            margin-bottom: auto;
+          
+            width: 100%;
+            height: 100%;
+        }
+
+
+     
+    </style>
+</head>
+<body>
+    
+
+    <div class="container_main">
+
+        <h1 id="txt_msg"><a style="color: #69a3ff; text-decoration: none;" href="">RESTART</a></h1>
+
+        <!-- <h1 class="ml9">
+            <span class="text-wrapper">
+              <span class="letters" id="txt_msg"></span>
+            </span>
+        </h1> -->
+
+        <div class="container_box">
+            <div class="container_block" id="b1" style="border-top: none;border-left: none;">
+                <i id="b1_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b1_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+            <div class="container_block" id="b2" style="border-top: none;">
+                <i id="b2_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b2_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+            <div class="container_block" id="b3"style="border-top: none;border-right: none;">
+                <i id="b3_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b3_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+
+            <div class="container_block" id="b4" style="border-left: none;">
+                <i id="b4_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b4_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+            <div class="container_block" id="b5">
+                <i id="b5_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b5_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+            <div class="container_block" id="b6" style="border-right: none;">
+                <i id="b6_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b6_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+            
+
+            <div class="container_block" id="b7" style="border-bottom: none;border-left: none;">
+                <i id="b7_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b7_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+            <div class="container_block" id="b8" style="border-bottom: none;">
+                <i id="b8_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b8_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+            <div class="container_block" id="b9" style="border-bottom: none;border-right: none;">
+                <i id="b9_o" style="display: none;" class="fa fa-times" aria-hidden="true"></i>
+                <i id="b9_x" style="display: none;" class="fa fa-circle-thin" aria-hidden="true"></i>
+            </div>
+            
+        </div>
+       
+
+    </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+<script>
+
+
+
+
+    
+    // function create2DArray(numRows, numColumns) {
+    //     let array = new Array(numRows);
+    //     for(let i = 0; i < numColumns; i++)
+    //         array[i] = new Array(numColumns);
+    //     return array;
+    // }
+
+    // checkWinner2 = (box_val) => {
+    //     // converting to 3x3 matrix
+    //     let n=3;
+    //     // let matrix = [];
+    //     let matrix = create2DArray(3, 3); 
+    //     var a = 0; var b = 0;
+
+    //     console.log(box_val);
+
+    //     for (let i = 0; i < box_val.length; i++) {
+    //         matrix[a][b] = box_val[i];
+    //         b++;
+    //         if(b==2){ a++; b=0; }
+    //         if(a == 2) a = 0;
+    //     }
+
+    //     console.log(matrix);
+    // }
+
+
+    checkWinner = (box_val) => {
+        var matchedElement = "";
+
+        if(box_val[0] == "x" && box_val[1] == "x" && box_val[2] == "x"){ matchedElement = "x"; return matchedElement;}
+        if(box_val[3] == "x" && box_val[4] == "x" && box_val[5] == "x"){ matchedElement = "x"; return matchedElement;}
+        if(box_val[6] == "x" && box_val[7] == "x" && box_val[8] == "x"){ matchedElement = "x"; return matchedElement;}
+        if(box_val[0] == "x" && box_val[3] == "x" && box_val[6] == "x"){ matchedElement = "x"; return matchedElement;}
+        if(box_val[1] == "x" && box_val[4] == "x" && box_val[7] == "x"){ matchedElement = "x"; return matchedElement;}
+        if(box_val[2] == "x" && box_val[5] == "x" && box_val[8] == "x"){ matchedElement = "x"; return matchedElement;}
+        if(box_val[0] == "x" && box_val[4] == "x" && box_val[8] == "x"){ matchedElement = "x"; return matchedElement;}
+        if(box_val[2] == "x" && box_val[4] == "x" && box_val[6] == "x"){ matchedElement = "x"; return matchedElement;}
+
+        if(box_val[0] == "o" && box_val[1] == "o" && box_val[2] == "o"){ matchedElement = "o"; return matchedElement;}
+        if(box_val[3] == "o" && box_val[4] == "o" && box_val[5] == "o"){ matchedElement = "o"; return matchedElement;}
+        if(box_val[6] == "o" && box_val[7] == "o" && box_val[8] == "o"){ matchedElement = "o"; return matchedElement;}
+        if(box_val[0] == "o" && box_val[3] == "o" && box_val[6] == "o"){ matchedElement = "o"; return matchedElement;}
+        if(box_val[1] == "o" && box_val[4] == "o" && box_val[7] == "o"){ matchedElement = "o"; return matchedElement;}
+        if(box_val[2] == "o" && box_val[5] == "o" && box_val[8] == "o"){ matchedElement = "o"; return matchedElement;}
+        if(box_val[0] == "o" && box_val[4] == "o" && box_val[8] == "o"){ matchedElement = "o"; return matchedElement;}
+        if(box_val[2] == "o" && box_val[4] == "o" && box_val[6] == "o"){ matchedElement = "o"; return matchedElement;}
+
+        return matchedElement;
+
+    }
+
+
+
+    checkIfAllMarked = (box_status) => {
+        for (let i = 0; i < box_status.length; i++) {
+            if(box_status[i] == 0)
+                return false;
+        }
+        return true;
+    }
+
+
+    var flag = true;
+
+    const box_val = ["","","","","","","","",""];
+    const box_status = [0,0,0,0,0,0,0,0,0];
+
+    $(".container_block").click(function(){
+        var curr_id = $(this).attr("id");
+        console.log(curr_id);
+        var index = curr_id.substr(curr_id.length - 1);
+
+        if(box_status[index-1] == '1') return false;
+
+        box_status[index-1] = 1;
+
+
+        console.log(box_status);
+
+        if(flag == true){
+            var temp_id = curr_id+"_o";
+            $('#'+temp_id).css("display","");
+            box_val[index-1] = 'x';
+        }
+
+        if(flag == false){
+            var temp_id = curr_id+"_x";
+            $('#'+temp_id).css("display","");
+            box_val[index-1] = 'o';
+        }
+
+
+
+        flag = !flag;
+
+        if(checkIfAllMarked(box_status) == true) alert("Draw");
+
+        var winner = checkWinner(box_val);
+
+
+
+        if(winner == 'x'){
+            $('#txt_msg').text("X is the Winner!");
+            $('#txt_msg').append(`
+                <a style="color: #69a3ff; text-decoration: none;" href="">RESTART</a>
+            `);
+            
+            $('.container_box').css("pointer-events","none");
+
+            return false;
+        }
+
+        if(winner == 'o'){
+            $('#txt_msg').text("O is the Winner!");
+            $('#txt_msg').append(`
+                <a style="color: #69a3ff; text-decoration: none;" href="">RESTART</a>
+            `);
+    
+            return false;
+        }
+
+        checkWinner(box_val);
+
+
+    });
+
+</script>
+
+
+
+</body>
+</html>
